@@ -58,13 +58,13 @@ public class GameCanvas extends Canvas implements Runnable {
 		int width = (int) getBounds().getWidth();
 		int height = (int) getBounds().getHeight();
 		graphics.fillRect(0, 0, width, height);
+		graphics.drawImage(tile.waterTile, 20, 20, 32, 32, null);
+		graphics.drawImage(tile.GrassTile, 420, 450, 128, 128, null);
 		drawImage(graphics, Jerksus);
 		graphics.setColor(Color.white);
 		graphics.drawString("FPS: " + fps, 20, 20);
 		//replace the tile with an array of tiles later in life.
 		//that means put this in another object in tiles
-		graphics.drawImage(tile.waterTile, 20, 20, 32, 32, null);
-		graphics.drawImage(tile.GrassTile, 420, 420, 128, 128, null);
 	}
 
 	public void Draw() {

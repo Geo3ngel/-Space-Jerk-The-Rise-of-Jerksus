@@ -1,11 +1,11 @@
-package GameEngine;
+package Mapping;
 
 import java.io.IOException;
 
 public class TileSheetDef extends TileSheet {
 	
 	public TileSheetDef() throws IOException {
-		super(LoadImage("TestTileSheet.jpg"));
-		setSpriteSheetDimensions(30,16);
+		super(LoadImage("tempTileSheet.jpg"));
+		setTileSheetDimensions(14,14);
 	}
 }

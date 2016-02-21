@@ -14,6 +14,12 @@ public class SpriteSheet {
 		this.spriteSheet = x;
 	}
 	
+	// Determines how many frames there are for the Tile in the picture
+		public void setSpriteSheetDimensions(int x, int y) {
+			spriteFrames = x;
+			spriteSequences = y;
+		}
+		
 	//Gets the sprite sheet's Height
 	public int getHeight(){
 		return spriteSheet.getHeight()/4;

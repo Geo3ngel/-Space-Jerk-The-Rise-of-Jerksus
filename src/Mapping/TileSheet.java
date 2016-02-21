@@ -1,4 +1,4 @@
-package GameEngine;
+package Mapping;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -22,7 +22,7 @@ public class TileSheet {
 	}
 
 	// Determines how many frames there are for the Tile in the picture
-	public void setSpriteSheetDimensions(int x, int y) {
+	public void setTileSheetDimensions(int x, int y) {
 		tileSets = x;
 		tileStates = y;
 	}
@@ -37,12 +37,14 @@ public class TileSheet {
 		return tileSheet.getWidth() / tileStates;
 	}
 
+	//Loads in Image specified (used in extended classes)
 	public static BufferedImage LoadImage(String name) throws IOException {
 		return ImageIO.read(TileSheet.class.getResourceAsStream(name));
 	}
 
+	//This Method gets a tile from a TileSheet
 	public BufferedImage getTileImage(int x, int y, int width, int height) {
-		BufferedImage sprite = tileSheet.getSubimage(x * 10, y * 10, width, height);
-		return sprite;
+		BufferedImage tile = tileSheet.getSubimage(getWidth()*x, getHeight()*y, width, height);
+		return tile;
 	}
 }
