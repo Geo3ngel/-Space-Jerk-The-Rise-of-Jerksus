@@ -5,7 +5,7 @@ import java.io.IOException;
 public class TileSheetDef extends TileSheet {
 	
 	public TileSheetDef() throws IOException {
-		super(LoadImage("tempTileSheet.jpg"));
-		setTileSheetDimensions(14,14);
+		super(LoadImage("tempTileSheet.png"));
+		setTileSheetDimensions(4,6);
 	}
 }

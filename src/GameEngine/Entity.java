@@ -12,14 +12,16 @@ public class Entity {
 	private SpriteSheet sprite;
 	private int direction;
 	private int tile;
-	private Point location;
+	private float x;
+	private float y;
 	private String name;
 
 	public Entity(String spriteLocation, Point Location, String entityName) throws IOException {
 		new BufferedImageLoader();
 		URL url = getClass().getResource(spriteLocation);
 		sprite = new SpriteSheet(ImageIO.read(url));
-		this.location = Location;
+		this.x = (float) Location.getX();
+		this.y = (float) Location.getY();
 		name = entityName;
 		tile = 1;
 	}
@@ -29,20 +31,20 @@ public class Entity {
 		this.direction = direction;
 	}
 
-	public void Move(int direction, int speed) {
+	public void Move(int direction, float speed) {
 		this.direction = direction;
 		switch (direction) {
 		case 0:
-			location.y += speed;
+			y += speed;
 			break;
 		case 1:
-			location.x -= speed;
+			x -= speed;
 			break;
 		case 2:
-			location.x += speed;
+			x += speed;
 			break;
 		case 3:
-			location.y -= speed;
+			y -= speed;
 			break;
 		}
 	}
@@ -72,8 +74,20 @@ public class Entity {
 		return direction;
 	}
 
-	public Point getLocation() {
-		return location;
+	public float getX() {
+		return x;
+	}
+
+	public void setX(float x) {
+		this.x = x;
+	}
+
+	public float getY() {
+		return y;
+	}
+
+	public void setY(float y) {
+		this.y = y;
 	}
 
 }

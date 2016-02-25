@@ -22,7 +22,7 @@ public class TileSheet {
 	}
 
 	// Determines how many frames there are for the Tile in the picture
-	public void setTileSheetDimensions(int x, int y) {
+	public void setTileSheetDimensions(int y, int x) {
 		tileSets = x;
 		tileStates = y;
 	}

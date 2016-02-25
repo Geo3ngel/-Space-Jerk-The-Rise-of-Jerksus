@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import Mapping.Tiles;
+import javax.swing.JFrame;
+
+import Maps.TestingTiles;
 
 public class GameCanvas extends Canvas implements Runnable {
 	/**
@@ -20,12 +22,20 @@ public class GameCanvas extends Canvas implements Runnable {
 	private Thread thread;
 	private long fps;
 	Entity Jerksus;
+	public static float SCALE;
+	public static final int DEFAULT_SIZE = 480;
 
 	public GameCanvas(int width, int height) {
 		this.setIgnoreRepaint(true);
 		this.setBounds(0, 0, width, height);
 		this.setBackground(Color.BLACK);
 		this.setVisible(true);
+		SCALE = height / DEFAULT_SIZE;
+	}
+	
+	public void updateScale(int width, int height){
+		this.setBounds(0, 0, width, height);
+		SCALE = height / DEFAULT_SIZE;
 	}
 
 	@Override
@@ -40,11 +50,13 @@ public class GameCanvas extends Canvas implements Runnable {
 			thread.start();
 		}
 	}
-	Tiles tile;
+	
+	//Change Later to Scale and start in different places on different maps
+	TestingTiles tile;
 	private void init() {
 		try {
-			Jerksus = new Entity("AnimationSpriteSheet.png",new Point(150,550), "Jerksus");
-			tile = new Tiles();
+			Jerksus = new Entity("AnimationSpriteSheet.png",new Point(5,60), "Jerksus");
+			tile = new TestingTiles();
 		} catch (IOException ex) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -59,7 +71,7 @@ public class GameCanvas extends Canvas implements Runnable {
 		int height = (int) getBounds().getHeight();
 		graphics.fillRect(0, 0, width, height);
 		graphics.drawImage(tile.waterTile, 20, 20, 32, 32, null);
-		graphics.drawImage(tile.GrassTile, 420, 450, 128, 128, null);
+		graphics.drawImage(tile.grassTile, 420, 450, 128, 128, null);
 		drawImage(graphics, Jerksus);
 		graphics.setColor(Color.white);
 		graphics.drawString("FPS: " + fps, 20, 20);
@@ -77,7 +89,7 @@ public class GameCanvas extends Canvas implements Runnable {
 	}
 
 	public void Update() {
-		Jerksus.Move(2, 1);
+		Jerksus.Move(2, .15f * SCALE);
 	}
 
 	@Override
@@ -100,9 +112,9 @@ public class GameCanvas extends Canvas implements Runnable {
 	
 	public void drawImage(Graphics g, Entity s) {
 		if (s != null) {
-			g.drawImage(s.getSprite(), s.getLocation().x, s.getLocation().y,
-					(int) (s.getSpriteWidth() * this.getBounds().getSize().getHeight() / 256),
-					(int) (s.getSpriteHeight() * this.getBounds().getSize().getHeight() / 256), null);
+			g.drawImage(s.getSprite(), (int)(s.getX() * SCALE), (int)(s.getY() * SCALE),
+					(int) (s.getSpriteWidth() * SCALE),
+					(int) (s.getSpriteHeight() * SCALE), null);
 		}
 	}
 
