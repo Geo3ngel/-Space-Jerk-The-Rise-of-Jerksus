@@ -67,7 +67,7 @@ public class GameCanvas extends Canvas implements Runnable {
 	}
 	
 	//private void initMap(){
-		
+	
 	//}
 
 	// Renders Everything
@@ -80,20 +80,26 @@ public class GameCanvas extends Canvas implements Runnable {
 		//graphics.drawImage(tile.waterTile, 20, 20, 32, 32, null);
 		//graphics.drawImage(tile.grassTile, 420, 450, 128, 128, null);
 		graphics.setColor(Color.white);
-		graphics.drawString("FPS: " + fps, 20, 20);
 		
 		//Proof of concept for map setting
-		//graphics.drawImage(tile.grassTile,50, 50, (int)(32 * SCALE), (int)(32 * SCALE), null);
-		
-		for(int i = 0; i<Maps.TestMap1.Map.length;i++){
-			for(int a = 0; a<Maps.TestMap1.Map.length;a++){
-				//setDefaultTile()
-				graphics.drawImage(tile.grassTile,(int)(i * 32 * SCALE), (int)(a  * 32 * SCALE), (int)(32 * SCALE), (int)(32 * SCALE), null);
+		//Will Load in specified Map here later*
+		TestMap1.setDefaultTile();
+		for(int i = 0;i<TestMap1.Map.length;i++){
+			for (int a = 0; a<TestMap1.Map[i].length;a++){
+				graphics.drawImage(TestMap1.Map[i][a],(int)(i*32*SCALE),(int)(a*32*SCALE), (int)(32 * SCALE), (int)(32 * SCALE), null);
 			}
-			drawImage(graphics, Jerksus);
 		}
+		
+		//for(int i = 0; i<Maps.TestMap1.Map.length;i++){
+		//	for(int a = 0; a<Maps.TestMap1.Map.length;a++){
+				//setDefaultTile()
+		//		graphics.drawImage(tile.grassTile,(int)(i * 32 * SCALE), (int)(a  * 32 * SCALE), (int)(32 * SCALE), (int)(32 * SCALE), null);
+		//	}
+		//}
 		//replace the tile with an array of tiles later in life.
 		//that means put this in another object in tiles
+			drawImage(graphics, Jerksus);
+			graphics.drawString("FPS: " + fps, 20, 20);
 	}
 
 	public void Draw() {
