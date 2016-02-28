@@ -1,12 +1,14 @@
 package GameEngine;
 
 import java.awt.Canvas;
+import Maps.MapsGrid;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Maps.TestMap1;
 
 import javax.swing.JFrame;
 
@@ -32,8 +34,8 @@ public class GameCanvas extends Canvas implements Runnable {
 		this.setVisible(true);
 		SCALE = height / DEFAULT_SIZE;
 	}
-	
-	public void updateScale(int width, int height){
+
+	public void updateScale(int width, int height) {
 		this.setBounds(0, 0, width, height);
 		SCALE = height / DEFAULT_SIZE;
 	}
@@ -50,31 +52,46 @@ public class GameCanvas extends Canvas implements Runnable {
 			thread.start();
 		}
 	}
-	
-	//Change Later to Scale and start in different places on different maps
+
+	// Change Later to Scale and start in different places on different maps
 	TestingTiles tile;
+
 	private void init() {
 		try {
-			Jerksus = new Entity("AnimationSpriteSheet.png",new Point(5,60), "Jerksus");
+			Jerksus = new Entity("AnimationSpriteSheet.png", new Point(5, 60), "Jerksus");
 			tile = new TestingTiles();
 		} catch (IOException ex) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		
+
 	}
 	
-	//Renders Everything
+	//private void initMap(){
+		
+	//}
+
+	// Renders Everything
 	public void Render() {
 		graphics = this.getBufferStrategy().getDrawGraphics();
 		graphics.setColor(Color.BLACK);
 		int width = (int) getBounds().getWidth();
 		int height = (int) getBounds().getHeight();
 		graphics.fillRect(0, 0, width, height);
-		graphics.drawImage(tile.waterTile, 20, 20, 32, 32, null);
-		graphics.drawImage(tile.grassTile, 420, 450, 128, 128, null);
-		drawImage(graphics, Jerksus);
+		//graphics.drawImage(tile.waterTile, 20, 20, 32, 32, null);
+		//graphics.drawImage(tile.grassTile, 420, 450, 128, 128, null);
 		graphics.setColor(Color.white);
 		graphics.drawString("FPS: " + fps, 20, 20);
+		
+		//Proof of concept for map setting
+		//graphics.drawImage(tile.grassTile,50, 50, (int)(32 * SCALE), (int)(32 * SCALE), null);
+		
+		for(int i = 0; i<Maps.TestMap1.Map.length;i++){
+			for(int a = 0; a<Maps.TestMap1.Map.length;a++){
+				//setDefaultTile()
+				graphics.drawImage(tile.grassTile,(int)(i * 32 * SCALE), (int)(a  * 32 * SCALE), (int)(32 * SCALE), (int)(32 * SCALE), null);
+			}
+			drawImage(graphics, Jerksus);
+		}
 		//replace the tile with an array of tiles later in life.
 		//that means put this in another object in tiles
 	}
@@ -109,12 +126,11 @@ public class GameCanvas extends Canvas implements Runnable {
 			}
 		}
 	}
-	
+
 	public void drawImage(Graphics g, Entity s) {
 		if (s != null) {
-			g.drawImage(s.getSprite(), (int)(s.getX() * SCALE), (int)(s.getY() * SCALE),
-					(int) (s.getSpriteWidth() * SCALE),
-					(int) (s.getSpriteHeight() * SCALE), null);
+			g.drawImage(s.getSprite(), (int) (s.getX() * SCALE), (int) (s.getY() * SCALE),
+					(int) (s.getSpriteWidth() * SCALE), (int) (s.getSpriteHeight() * SCALE), null);
 		}
 	}
 

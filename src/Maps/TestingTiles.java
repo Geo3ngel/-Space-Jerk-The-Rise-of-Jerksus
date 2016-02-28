@@ -18,6 +18,8 @@ public class TestingTiles extends TileSheetDef {
 	
 	public BufferedImage grassTile = getTileImage(0,2,getWidth(),getHeight());
 
+	//Will render in tiles then set them to static buffered images. only needs to be rendered once per map load
+	//public void RenderTiles
 	
 	//public BufferedImage grassTile =(getTileImage(0,2,getWidth(),getHeight()));
 }

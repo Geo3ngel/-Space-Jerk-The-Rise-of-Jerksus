@@ -15,5 +15,4 @@ public class MapsGrid {
 		return p;
 	}
 }
-//To do: Make the Double array account for cordinents
 
