@@ -5,4 +5,4 @@
  * @author GeoEn
  *
  */
-package Tiles;
+package MapStuff;

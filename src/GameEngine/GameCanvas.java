@@ -1,18 +1,18 @@
 package GameEngine;
 
 import java.awt.Canvas;
-import Maps.MapsGrid;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Maps.TestMap1;
 
 import javax.swing.JFrame;
 
-import Maps.TestingTiles;
+import MapStuff.MapsGrid;
+import MapStuff.TestMap1;
+import MapStuff.TestingTiles;
 
 public class GameCanvas extends Canvas implements Runnable {
 	/**
@@ -65,10 +65,10 @@ public class GameCanvas extends Canvas implements Runnable {
 		}
 
 	}
-	
-	//private void initMap(){
-	
-	//}
+
+	// private void initMap(){
+
+	// }
 
 	// Renders Everything
 	public void Render() {
@@ -77,29 +77,23 @@ public class GameCanvas extends Canvas implements Runnable {
 		int width = (int) getBounds().getWidth();
 		int height = (int) getBounds().getHeight();
 		graphics.fillRect(0, 0, width, height);
-		//graphics.drawImage(tile.waterTile, 20, 20, 32, 32, null);
-		//graphics.drawImage(tile.grassTile, 420, 450, 128, 128, null);
 		graphics.setColor(Color.white);
-		
-		//Proof of concept for map setting
-		//Will Load in specified Map here later*
-		TestMap1.setDefaultTile();
-		for(int i = 0;i<TestMap1.Map.length;i++){
-			for (int a = 0; a<TestMap1.Map[i].length;a++){
-				graphics.drawImage(TestMap1.Map[i][a],(int)(i*32*SCALE),(int)(a*32*SCALE), (int)(32 * SCALE), (int)(32 * SCALE), null);
+
+		// Will need to have another class to handle which map to load in, then
+		// reference it here.
+
+		// Loads In background Map Tiles
+		TestMap1.callMap();
+
+		// Draws out BackGround
+		for (int i = 0; i < TestMap1.Map.length; i++) {
+			for (int a = 0; a < TestMap1.Map[i].length; a++) {
+				graphics.drawImage(TestMap1.Map[i][a], (int) (i * 32 * SCALE), (int) (a * 32 * SCALE),
+						(int) (32 * SCALE), (int) (32 * SCALE), null);
 			}
 		}
-		
-		//for(int i = 0; i<Maps.TestMap1.Map.length;i++){
-		//	for(int a = 0; a<Maps.TestMap1.Map.length;a++){
-				//setDefaultTile()
-		//		graphics.drawImage(tile.grassTile,(int)(i * 32 * SCALE), (int)(a  * 32 * SCALE), (int)(32 * SCALE), (int)(32 * SCALE), null);
-		//	}
-		//}
-		//replace the tile with an array of tiles later in life.
-		//that means put this in another object in tiles
-			drawImage(graphics, Jerksus);
-			graphics.drawString("FPS: " + fps, 20, 20);
+		drawImage(graphics, Jerksus);
+		graphics.drawString("FPS: " + fps, 20, 20);
 	}
 
 	public void Draw() {

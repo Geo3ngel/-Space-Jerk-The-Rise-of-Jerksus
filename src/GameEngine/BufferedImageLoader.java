@@ -12,5 +12,5 @@ public class BufferedImageLoader {
 		BufferedImage image = ImageIO.read(url);
 		return image;
 	}
-	
+
 }

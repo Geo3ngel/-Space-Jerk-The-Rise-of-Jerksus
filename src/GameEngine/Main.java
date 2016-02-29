@@ -13,7 +13,7 @@ public class Main extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	public static final int WINDOW_WIDTH = 2160;
 	public static final int WINDOW_HEIGHT = 1080;
 
@@ -25,21 +25,20 @@ public class Main extends JFrame {
 
 		GameCanvas canvas = new GameCanvas(this.getContentPane().getWidth(), this.getContentPane().getHeight());
 		add(canvas);
-		
-		this.addComponentListener(new ComponentAdapter() 
-		{  
-		        public void componentResized(ComponentEvent evt) {
-		            Component c = (Component)evt.getSource();
-		            canvas.updateScale(c.getWidth(), c.getHeight());
-		        }
+
+		this.addComponentListener(new ComponentAdapter() {
+			public void componentResized(ComponentEvent evt) {
+				Component c = (Component) evt.getSource();
+				canvas.updateScale(c.getWidth(), c.getHeight());
+			}
 		});
-		
+
 		pack();
 	}
 
 	public static void main(String[] args) throws IOException {
 		Main main = new Main();
-		
+
 	}
 
 }

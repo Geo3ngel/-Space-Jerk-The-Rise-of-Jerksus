@@ -48,12 +48,12 @@ public class Entity {
 			break;
 		}
 	}
-	
-	public int getSpriteWidth(){
+
+	public int getSpriteWidth() {
 		return sprite.getWidth();
 	}
-	
-	public int getSpriteHeight(){
+
+	public int getSpriteHeight() {
 		return sprite.getHeight();
 	}
 

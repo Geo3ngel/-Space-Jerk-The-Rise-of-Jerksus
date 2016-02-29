@@ -37,14 +37,14 @@ public class TileSheet {
 		return tileSheet.getWidth() / tileStates;
 	}
 
-	//Loads in Image specified (used in extended classes)
+	// Loads in Image specified (used in extended classes)
 	public static BufferedImage LoadImage(String name) throws IOException {
 		return ImageIO.read(TileSheet.class.getResourceAsStream(name));
 	}
 
-	//This Method gets a tile from a TileSheet
+	// This Method gets a tile from a TileSheet
 	public BufferedImage getTileImage(int x, int y, int width, int height) {
-		BufferedImage tile = tileSheet.getSubimage(getWidth()*x, getHeight()*y, width, height);
+		BufferedImage tile = tileSheet.getSubimage(getWidth() * x, getHeight() * y, width, height);
 		return tile;
 	}
 }
