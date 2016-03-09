@@ -15,6 +15,7 @@ public class Entity {
 	private float x;
 	private float y;
 	private String name;
+	private int health;
 
 	public Entity(String spriteLocation, Point Location, String entityName) throws IOException {
 		new BufferedImageLoader();

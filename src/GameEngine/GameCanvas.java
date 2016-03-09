@@ -11,8 +11,10 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 import MapStuff.MapsGrid;
-import MapStuff.TestMap1;
+import MapStuff.MapLogic;
+import MapStuff.Mapping;
 import MapStuff.TestingTiles;
+import Maps.Ground_Zero;
 
 public class GameCanvas extends Canvas implements Runnable {
 	/**
@@ -83,15 +85,15 @@ public class GameCanvas extends Canvas implements Runnable {
 		// reference it here.
 
 		// Loads In background Map Tiles
-		TestMap1.callMap();
+		MapLogic.callMap();
 
-		// Draws out BackGround
-		for (int i = 0; i < TestMap1.Map.length; i++) {
-			for (int a = 0; a < TestMap1.Map[i].length; a++) {
-				graphics.drawImage(TestMap1.Map[i][a], (int) (i * 32 * SCALE), (int) (a * 32 * SCALE),
+		// Draws out Map
+		for (int i = 0; i < Mapping.Map.length; i++) {
+			for (int a = 0; a < Mapping.Map[i].length; a++) {
+				graphics.drawImage(Mapping.Map[i][a], (int) (i * 32 * SCALE), (int) (a * 32 * SCALE),
 						(int) (32 * SCALE), (int) (32 * SCALE), null);
 			}
-		}
+		}	
 		drawImage(graphics, Jerksus);
 		graphics.drawString("FPS: " + fps, 20, 20);
 	}

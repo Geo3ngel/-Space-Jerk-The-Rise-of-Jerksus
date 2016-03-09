@@ -227,7 +227,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_2QwokNynEeWxjercIxXVXA" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_WgGd4NyoEeW4SO5mjE2E5A" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_1r3L6dynEeWxjercIxXVXA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_bePoMOMREeW04piczyxc6g" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_1r3L6dynEeWxjercIxXVXA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_2QwokdynEeWxjercIxXVXA" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -254,7 +254,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_2QxPotynEeWxjercIxXVXA" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_WgJhMNyoEeW4SO5mjE2E5A" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_1r2kvdynEeWxjercIxXVXA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_beRdYuMREeW04piczyxc6g" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_1r2kvdynEeWxjercIxXVXA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_2QxPo9ynEeWxjercIxXVXA" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -264,7 +264,7 @@
         <tags>toolbarSeparator</tags>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_2QxPptynEeWxjercIxXVXA" elementId="group.help" toBeRendered="false"/>
       </children>
-      <children xsi:type="menu:ToolBar" xmi:id="_2QxPp9ynEeWxjercIxXVXA" elementId="org.eclipse.ui.workbench.help">
+      <children xsi:type="menu:ToolBar" xmi:id="_2QxPp9ynEeWxjercIxXVXA" elementId="org.eclipse.ui.workbench.help" visible="false">
         <tags>Draggable</tags>
       </children>
       <children xsi:type="menu:ToolControl" xmi:id="_2bwXoNynEeWxjercIxXVXA" elementId="PerspectiveSpacer" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
@@ -2541,6 +2541,25 @@
   <commands xmi:id="_2C9dKdynEeWxjercIxXVXA" elementId="AUTOGEN:::variableViewActions/org.eclipse.wst.jsdt.debug.ui.variableview.show.this" commandName="Show 'this' variable" description="Show or hide the this variable" category="_1ruB7dynEeWxjercIxXVXA"/>
   <commands xmi:id="_2C9dKtynEeWxjercIxXVXA" elementId="AUTOGEN:::variableViewActions/org.eclipse.wst.jsdt.debug.ui.variableview.show.prototypes" commandName="Show proto variables" description="Show or hide proto variables" category="_1ruB7dynEeWxjercIxXVXA"/>
   <commands xmi:id="_2C-EMNynEeWxjercIxXVXA" elementId="AUTOGEN:::org.eclipse.ui.articles.action.contribution.view/org.eclipse.wst.wsi.ui.internal.actions.actionDelegates.ValidateWSIProfileActionDelegate" commandName="WS-I Profile Validator" description="Validate WS-I Message Log File" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qcWMeFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.hotfixPublish" commandName="Publish Hotfix" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9QOFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.featurePublish" commandName="Publish Feature" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9QeFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.featureCheckout" commandName="Checkout Feature" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9QuFcEeWpr4d9FbjQZw" elementId="org.eclipse.e4.ui.importer.openDirectory" commandName="Import Projects from Folder..." category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9Q-FcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.releasePublish" commandName="Publish Release" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9ROFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.ui.team.CompareWithCommit" commandName="Compare with Commit..." category="_1ruB4NynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9ReFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.init" commandName="Init Git Flow" category="_1ruB4NynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9RuFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.releaseStart" commandName="Start Release" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9R-FcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.featureStart" commandName="Start Feature" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9SOFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.ui.team.CompareWithRevision" commandName="Compare with Branch, Tag or Reference..." category="_1ruB4NynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9SeFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.featureFinish" commandName="Finish Feature" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9SuFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.hotfixFinish" commandName="Finish Hotfix" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9S-FcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.ui.team.ReplaceWithPrevious" commandName="Replace with Previous Revision" category="_1ruB4NynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9TOFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.releaseFinish" commandName="Finish Release" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9TeFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.hotfixStart" commandName="Start Hotfix" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9TuFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.featureTrack" commandName="Track Feature" category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9T-FcEeWpr4d9FbjQZw" elementId="org.eclipse.oomph.setup.editor.synchronizePreferences" commandName="Synchronize Preferences" category="_1rtax9ynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9UOFcEeWpr4d9FbjQZw" elementId="org.eclipse.e4.ui.importer.configureProject" commandName="Configure and detect &amp;nested projects..." category="_1ruB7dynEeWxjercIxXVXA"/>
+  <commands xmi:id="_4qc9UeFcEeWpr4d9FbjQZw" elementId="org.eclipse.egit.gitflow.ui.command.featureRebase" commandName="Rebase Feature" category="_1ruB7dynEeWxjercIxXVXA"/>
   <addons xmi:id="_1qy0wdynEeWxjercIxXVXA" elementId="org.eclipse.e4.core.commands.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_1qy0wtynEeWxjercIxXVXA" elementId="org.eclipse.e4.ui.contexts.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_1qy0w9ynEeWxjercIxXVXA" elementId="org.eclipse.e4.ui.bindings.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
