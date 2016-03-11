@@ -44,6 +44,6 @@ public class Mapping {
 	// to the pixel boundaries in the render method in GameCanvas.
 	public static void callMap() {
 		//Ground_Zero.initializeGround_Zero();
-		Ground_Zero_House1.initializeGround_Zero();
+		Ground_Zero_House1.initializeGround_Zero_House1();
 	}
 }

@@ -14,7 +14,8 @@ public class Main extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final int WINDOW_WIDTH = 2160;
+	//Fix to actually fit screen ratio
+	public static final int WINDOW_WIDTH = 1920;
 	public static final int WINDOW_HEIGHT = 1080;
 
 	public Main() {
