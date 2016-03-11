@@ -1,4 +1,4 @@
-package MapStuff;
+package ObjMaps;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import Maps.Ground_Zero_House1;
 //with 'objects' to add in detail.
 
 //Really its just so we can be lazy with the mapping Tiles/Spiriting
-public class LoadTileObjects extends TileSheetDef{
+public class LoadTileObjects{
 	
 public static BufferedImage[][] ObjMap;
 	

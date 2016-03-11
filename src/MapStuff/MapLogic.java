@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Maps.Ground_Zero;
 import Maps.Ground_Zero_House1;
+import ObjMaps.LoadTileObjects;
 
 public class MapLogic {
 	static Scanner scan = new Scanner(System.in);
@@ -18,5 +19,6 @@ public class MapLogic {
 		//else
 		Ground_Zero_House1.initializeGround_Zero_House1();
 		LoadTileObjects.callMap();
+		ObjMaps.Ground_Zero_House1.initializeGround_Zero_House1();
 	}
 }

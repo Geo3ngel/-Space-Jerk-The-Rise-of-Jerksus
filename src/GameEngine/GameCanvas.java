@@ -11,11 +11,11 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 import MapStuff.MapsGrid;
-import MapStuff.LoadTileObjects;
 import MapStuff.MapLogic;
 import MapStuff.Mapping;
 import MapStuff.TestingTiles;
 import Maps.Ground_Zero;
+import ObjMaps.LoadTileObjects;
 import ObjMaps.Objects;
 
 public class GameCanvas extends Canvas implements Runnable {
@@ -59,11 +59,14 @@ public class GameCanvas extends Canvas implements Runnable {
 
 	// Change Later to Scale and start in different places on different maps
 	TestingTiles tile;
+	
+	Objects object;
 
 	private void init() {
 		try {
 			Jerksus = new Entity("AnimationSpriteSheet.png", MapsGrid.gridCords(15,7), "Jerksus");
 			tile = new TestingTiles();
+			object = new Objects();
 		} catch (IOException ex) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -97,7 +100,6 @@ public class GameCanvas extends Canvas implements Runnable {
 			}
 		}	
 		
-		LoadTileObjects.callMap();
 		//Draws objects over Map
 		for (int i = 0; i < LoadTileObjects.ObjMap.length; i++) {
 			for (int a = 0; a < LoadTileObjects.ObjMap[i].length; a++) {
@@ -105,10 +107,9 @@ public class GameCanvas extends Canvas implements Runnable {
 						(int) (32 * SCALE), (int) (32 * SCALE), null);
 			}
 		}	
-		graphics.drawImage(Objects.tableObj	, 50, 50, 50, 50, null);
+		
 		drawImage(graphics, Jerksus);
 		graphics.drawString("FPS: " + fps, 20, 20);
-		graphics.drawImage(Objects.tableObj	, 5, 50, 50, 50, null);
 	}
 
 	public void Draw() {

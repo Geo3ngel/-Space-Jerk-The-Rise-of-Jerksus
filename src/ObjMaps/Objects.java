@@ -8,14 +8,14 @@ import Mapping.TileSheetDef;
 public class Objects extends TileSheetDef {
 
 	public Objects() throws IOException {
-		super("table.png");
-		tableObj = getTileImage(0,0, getWidth(), getHeight());
-		
+		super("table2.png");		
 		//Objects being initialized here
-		tableObj = getTileImage(2, 5, getWidth(), getHeight());
+		tableObj = getTileImage(0, 0, 32, 32);
+		nextObjTest = getTileImage(0,1,32,32);
+		
 	}
-
 	
 	//Object Declarations
 	public static BufferedImage tableObj;
+	public static BufferedImage nextObjTest;
 }
