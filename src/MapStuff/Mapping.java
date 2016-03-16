@@ -2,9 +2,6 @@ package MapStuff;
 
 import java.awt.image.BufferedImage;
 
-import MapStuff.MapsGrid;
-import Maps.Ground_Zero;
-import Maps.Ground_Zero_House1;
 //To be made abstract as a template for other Locations
 public class Mapping {
 
@@ -42,8 +39,4 @@ public class Mapping {
 	//Put in another class that will control Mapping LOgic at some point
 	// will initialize everything from the background default tiles,
 	// to the pixel boundaries in the render method in GameCanvas.
-	public static void callMap() {
-		//Ground_Zero.initializeGround_Zero();
-		Ground_Zero_House1.initializeGround_Zero_House1();
-	}
 }

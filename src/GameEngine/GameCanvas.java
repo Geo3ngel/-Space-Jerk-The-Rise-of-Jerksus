@@ -17,6 +17,8 @@ import MapStuff.TestingTiles;
 import Maps.Ground_Zero;
 import ObjMaps.LoadTileObjects;
 import ObjMaps.Objects;
+import OverLay.LoadObjMaps;
+import OverLay.OverLayObjects;
 
 public class GameCanvas extends Canvas implements Runnable {
 	/**
@@ -57,16 +59,19 @@ public class GameCanvas extends Canvas implements Runnable {
 		}
 	}
 
-	// Change Later to Scale and start in different places on different maps
+	// This is where you add things to initialize for layers/imageSheets
 	TestingTiles tile;
-	
+
 	Objects object;
+	
+	OverLayObjects OverLayObj;
 
 	private void init() {
 		try {
-			Jerksus = new Entity("AnimationSpriteSheet.png", MapsGrid.gridCords(15,7), "Jerksus");
+			Jerksus = new Entity("AnimationSpriteSheet.png", MapsGrid.gridCords(15, 7), "Jerksus");
 			tile = new TestingTiles();
 			object = new Objects();
+			OverLayObj = new OverLayObjects();
 		} catch (IOException ex) {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -98,18 +103,33 @@ public class GameCanvas extends Canvas implements Runnable {
 				graphics.drawImage(Mapping.Map[i][a], (int) (i * 32 * SCALE), (int) (a * 32 * SCALE),
 						(int) (32 * SCALE), (int) (32 * SCALE), null);
 			}
-		}	
-		
-		//Draws objects over Map
+		}
+
+		// Draws objects over Map, but under entities
 		for (int i = 0; i < LoadTileObjects.ObjMap.length; i++) {
 			for (int a = 0; a < LoadTileObjects.ObjMap[i].length; a++) {
+				if(LoadTileObjects.ObjMap[i][a] != null){
 				graphics.drawImage(LoadTileObjects.ObjMap[i][a], (int) (i * 32 * SCALE), (int) (a * 32 * SCALE),
 						(int) (32 * SCALE), (int) (32 * SCALE), null);
+				}
 			}
-		}	
-		
+		}
+
 		drawImage(graphics, Jerksus);
 		graphics.drawString("FPS: " + fps, 20, 20);
+
+		// Draws Map objects over Map and Entities
+		for (int i = 0; i < LoadObjMaps.ObjMapOverLay.length; i++) {
+			for (int a = 0; a < LoadObjMaps.ObjMapOverLay[i].length; a++) {
+				if(LoadObjMaps.ObjMapOverLay[i][a] != null){
+				graphics.drawImage(LoadObjMaps.ObjMapOverLay[i][a], (int) (i * 32 * SCALE), (int) (a * 32 * SCALE),
+						(int) (32 * SCALE), (int) (32 * SCALE), null);
+				
+				//debugging statement below
+				//System.out.println("its drawing at " + i + " " + a);
+				}
+			}
+		}
 	}
 
 	public void Draw() {

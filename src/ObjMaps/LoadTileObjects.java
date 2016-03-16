@@ -18,14 +18,6 @@ public static BufferedImage[][] ObjMap;
 	public static void MapChangeTo(int columns, int rows){
 		ObjMap = new BufferedImage[columns][rows];
 	}
-	public static void setDefaultTile() {
-		for (int i = 0; i < ObjMap.length; i++) {
-			for (int a = 0; a < ObjMap[i].length; a++) {
-				// must have tiles constructor before referencing tiles
-				ObjMap[i][a] = null;
-			}
-		}
-	}
 
 	public static void setObjMap(BufferedImage[][] map) {
 		for (int k = 0; k < ObjMap.length; k++) {
@@ -35,11 +27,6 @@ public static BufferedImage[][] ObjMap;
 				}
 			}
 		}
-	}
-	
-	public static void callMap() {
-		//Ground_Zero.initializeGround_Zero();
-		ObjMaps.Ground_Zero_House1.initializeGround_Zero_House1();
 	}
 	
 }

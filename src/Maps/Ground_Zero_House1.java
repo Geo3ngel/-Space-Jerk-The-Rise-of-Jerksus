@@ -36,8 +36,6 @@ public static BufferedImage[][] ground_Zero_House1 = new BufferedImage[30][16];
 		ground_Zero_House1[11][8] = TestingTiles.insideLightWoodentile;
 		ground_Zero_House1[11][9] = TestingTiles.insideLightWoodentile;
 		ground_Zero_House1[11][10] = TestingTiles.insideLightWoodentile;
-
-		ground_Zero_House1[10][5] = TestingTiles.table;
 		
 		ground_Zero_House1[12][8] = TestingTiles.insideLightWoodentile;
 		ground_Zero_House1[12][9] = TestingTiles.insideLightWoodentile;
