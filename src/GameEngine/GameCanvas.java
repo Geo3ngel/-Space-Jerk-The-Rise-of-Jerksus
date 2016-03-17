@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,9 +30,13 @@ public class GameCanvas extends Canvas implements Runnable {
 	private Graphics graphics;
 	private Thread thread;
 	private long fps;
-	Entity Jerksus;
+	public static Entity Jerksus;
 	public static float SCALE;
 	public static final int DEFAULT_SIZE = 480;
+	public boolean moving;
+	public static int move = 32;
+	
+	Scanner scan = new Scanner(System.in);
 
 	public GameCanvas(int width, int height) {
 		this.setIgnoreRepaint(true);
@@ -68,7 +73,7 @@ public class GameCanvas extends Canvas implements Runnable {
 
 	private void init() {
 		try {
-			Jerksus = new Entity("AnimationSpriteSheet.png", MapsGrid.gridCords(15, 7), "Jerksus");
+			Jerksus = new Entity("AnimationSpriteSheet.png", 3, 4, MapsGrid.gridCords(15, 7), "Jerksus");
 			tile = new TestingTiles();
 			object = new Objects();
 			OverLayObj = new OverLayObjects();
@@ -115,8 +120,12 @@ public class GameCanvas extends Canvas implements Runnable {
 			}
 		}
 
+		//Entities go here
 		drawImage(graphics, Jerksus);
 		graphics.drawString("FPS: " + fps, 20, 20);
+		
+		//below commented out code is taking image from buffered Entity Array to test
+		//graphics.drawImage(Entity.spritePhases[0][1], 10, 10, 128,128, null);
 
 		// Draws Map objects over Map and Entities
 		for (int i = 0; i < LoadObjMaps.ObjMapOverLay.length; i++) {
@@ -141,15 +150,48 @@ public class GameCanvas extends Canvas implements Runnable {
 		}
 	}
 
+	public void entitiesMoving(){
+		
+	}
+	
 	public void Update() {
+		tick();
 		Jerksus.Move(2, .15f * SCALE);
+		
+		//set entity speed in child class with fast/slow paces, and able to scale to buffs/debuffs
+		Jerksus.setEntitySpeed(2);
+		
+		//below stuff is probz useless
+		
+		//if(move != 32){
+		//	Jerksus.getDirection(2);
+		//	move++;
+		//	System.out.println(move);
+		//}
+		
+		
+		//Jerksus.Move(1);
+		//
+		//if(move == 32){
+		//	if(scan.nextInt()==1){
+		//	 EntityDef.entityMove.move(2,2);
+		//	}
+		//}
+	}
+	
+	public void tick(){
+		
 	}
 
+	//This is where the game cycles through all its steps (updating stuff)
 	@Override
 	public void run() {
 		while (true) {
 			long beginTime = System.currentTimeMillis();
+			
+			//update will be updating all the entity animations/positioning, and tile animations
 			Update();
+			
 			Render();
 			Draw();
 			fps = System.currentTimeMillis() - beginTime;

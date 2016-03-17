@@ -22,12 +22,12 @@ public class SpriteSheet {
 
 	// Gets the sprite sheet's Height
 	public int getHeight() {
-		return spriteSheet.getHeight() / 4;
+		return spriteSheet.getHeight() / spriteSequences;
 	}
 
 	// Gets the sprite sheet's width
 	public int getWidth() {
-		return spriteSheet.getWidth() / 3;
+		return spriteSheet.getWidth() / spriteFrames;
 	}
 
 	public BufferedImage getSprite(int x, int y, int width, int height) {

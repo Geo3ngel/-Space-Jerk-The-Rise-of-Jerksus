@@ -14,6 +14,10 @@ public class MapLogic {
 		OverLay.Ground_Zero_House1.initializeGround_Zero_House1();
 	}
 	
+	public static void testIslands(){
+		
+	}
+	
 	public static void groundZero(){
 		Ground_Zero.initializeGround_Zero();
 	}
