@@ -12,5 +12,10 @@ public class BufferedImageLoader {
 		BufferedImage image = ImageIO.read(url);
 		return image;
 	}
-
+	
+	//Try to Casts to SpriteSheet instead of Buffered Image
+	public static SpriteSheet getSpriteSheet(String imagePath) throws IOException{
+		SpriteSheet cancer = new SpriteSheet(LoadImage(imagePath));
+		return cancer;
+	}
 }

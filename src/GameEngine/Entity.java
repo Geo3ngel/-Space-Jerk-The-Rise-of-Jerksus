@@ -1,27 +1,29 @@
 package GameEngine;
 
 import java.awt.Point;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-public class Entity {
+import EntityDef.Controller;
 
-	private SpriteSheet sprite;
-	private String name;
-	private int tile;
-	protected int direction;
-	protected float x;
-	protected float y;
+public abstract class Entity implements ActionListener{
+
+	protected SpriteSheet sprite;
+	protected String name;
+	protected int tile;
+	
+	protected int direction = 0;
+	protected int phase = 1;
+	
+	public float x;
+	public float y;
 	protected float health;
 	protected static BufferedImage[][] spritePhases;
 	protected float entitySpeed;
-	private boolean movingRight;
-	private boolean movingLeft;
-	private boolean movingUp;
-	private boolean movingDown;
 	protected int move = 0;
 
 	// TODO: move the Location initialization logic into another method,
@@ -56,78 +58,40 @@ public class Entity {
 
 	// Maybe have variants for run/walk, probably overload for faster/slower
 	// mobs
-	public void setEntitySpeed(int speed) {
-		entitySpeed = GameCanvas.SCALE / speed;
+	public void setEntitySpeed(float speed) {
+		entitySpeed = GameCanvas.SCALE * speed;
 	}
 
-	public void getDirection(int direction) {
-		this.direction = direction;
-		switch (direction) {
-
+	//this move method is probz useless as of soon, unless repurposed later
+	public void Move(int tiles/*, int direction*/) {
+		
+		//this.direction = direction;
+		//switch (direction) {
 		// moving logic per round about
-		case 0:
-			movingDown = true;
+		//case 0:
+		if(Controller.movingD){
 			y += entitySpeed;
-			break;
-
-		case 1:
-			movingLeft = true;
-			x -= entitySpeed;
-			break;
 			
-		case 2:
-			movingRight = true;
-			x += entitySpeed;
-			break;
-			
-		case 3:
-			movingUp = true;
-			y -= entitySpeed;
-			break;
 		}
-	}
-
-	public void Move(int tiles) {
+		//case 1:
+		else if(Controller.movingL){
+			x -= entitySpeed;
+			
+		}
+		//case 2:
+		else if(Controller.movingL){
+			x += entitySpeed;
+			
+		}
+			
+		//case 3:
+		else if(Controller.movingL){
+			y -= entitySpeed;
+			
+		}
 		
-			if(movingDown&&(move == 32)){
-				move = 0;
-				movingDown = false;
-			}
-			if(movingDown){
-				y += entitySpeed;
-				move++;
-			}
-			
-			else if(movingLeft&&(move == 32)){
-				move = 0;
-				movingLeft = false;
-			}
-			if(movingLeft){
-				x -= entitySpeed;
-				move++;
-			}
-			
-			if(movingRight&&(move == 32)){
-				move = 0;
-				movingRight = false;
-			}
-			else if(movingRight){
-				x += entitySpeed;
-				move++;
-			}
-			
-			if(movingUp&&(move <= 32)){
-				move = 0;
-				movingUp = false;
-			}
-			else if(movingUp){
-				y -= entitySpeed;
-				move++;
-			}
-			
-		
-
 	}
+			
 
 	public int getSpriteWidth() {
 		return sprite.getWidth();
@@ -138,9 +102,11 @@ public class Entity {
 	}
 
 	// TEMP
+	//Make it more general and override in Player Class
 	// edits the buffered Sprite Sheet into the proper image
 	public BufferedImage getSprite() {
-		return spritePhases[1][2];
+		//change 2 to phase later
+		return spritePhases[phase][direction];
 	}
 
 	public String getName() {
@@ -155,6 +121,7 @@ public class Entity {
 		return direction;
 	}
 
+	//gets the Entitie's X cord
 	public float getX() {
 		return x;
 	}
@@ -163,6 +130,7 @@ public class Entity {
 		this.x = x;
 	}
 
+	//gets the Entitie's Y cord
 	public float getY() {
 		return y;
 	}

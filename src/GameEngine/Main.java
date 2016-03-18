@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 
+import EntityDef.Controller;
 import EntityDef.entityMove;
 
 public class Main extends JFrame {
@@ -16,7 +17,7 @@ public class Main extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	// Fix to actually fit screen ratio
 	public static final int WINDOW_WIDTH = 1920;
 	public static final int WINDOW_HEIGHT = 1080;
@@ -44,14 +45,5 @@ public class Main extends JFrame {
 
 	public static void main(String[] args) throws IOException {
 		Main main = new Main();
-		
-		//Below May be useless
-		
-		//if (GameCanvas.move == 32) {
-		//	if (scan.nextInt() == 1) {
-		//		entityMove.move(2, 2);
-		//	}
-		//}
 	}
-
 }
