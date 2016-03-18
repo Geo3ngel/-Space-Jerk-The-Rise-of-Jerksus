@@ -2,11 +2,14 @@ package EntityDef;
 
 import java.util.Scanner;
 
+import GameEngine.Entity;
 import GameEngine.GameCanvas;
+import GameEngine.Main;
 
 public class Controller {
 
-	Scanner scan = new Scanner(System.in);
+	static Scanner scan = new Scanner(System.in);
+	//Remove Screen Side Limits Later after adding in tile space rendering
 
 	private static String move = "move";
 	private static String direction1 = "down";
@@ -90,28 +93,60 @@ public class Controller {
 			// in each direction
 
 			if (movingD) {
-				GameCanvas.Jerksus.setY(GameCanvas.Jerksus.getY() + 1);
-				GameCanvas.Jerksus.getSprite();
-				moveTick++;
-				typeable = false;
+				if ((((int) (Entitys.Player.getY() + 1)) < (GameCanvas.DEFAULT_SIZE))) {
+					GameCanvas.Jerksus.setY(Entity.getY() + 1);
+					GameCanvas.Jerksus.getSprite();
+					moveTick++;
+					typeable = false;
+				} else {
+					System.out.println("NO. YOU CAN'T MOVE ME THERE. JERK");
+					movingD = false;
+					moveTick = 0;
+					tiles = 1;
+					input = scan.nextLine();
+				}
 			}
 
 			else if (movingL) {
-				GameCanvas.Jerksus.setX(GameCanvas.Jerksus.getX() - 1);
-				moveTick++;
-				typeable = false;
+				if (((int) ((Entitys.Player.getX() - 1))) > -1) {
+					GameCanvas.Jerksus.setX(Entity.getX() - 1);
+					moveTick++;
+					typeable = false;
+				} else {
+					System.out.println("NO. YOU CAN'T MOVE ME THERE. JERK");
+					movingU = false;
+					tiles = 1;
+					moveTick = 0;
+					input = scan.nextLine();
+				}
 			}
 
 			else if (movingU) {
-				GameCanvas.Jerksus.setY(GameCanvas.Jerksus.getY() - 1);
-				moveTick++;
-				typeable = false;
+				if (((int) ((Entitys.Player.getY() - 1))) > -1) {
+					GameCanvas.Jerksus.setY(Entity.getY() - 1);
+					moveTick++;
+					typeable = false;
+				} else {
+					System.out.println("NO. YOU CAN'T MOVE ME THERE. JERK");
+					movingU = false;
+					tiles = 1;
+					moveTick = 0;
+					input = scan.nextLine();
+				}
 			}
 
 			else if (movingR) {
-				GameCanvas.Jerksus.setX(GameCanvas.Jerksus.getX() + 1);
-				moveTick++;
-				typeable = false;
+				if ((((int) (Entitys.Player.getX() + 1)) < (GameCanvas.DEFAULT_SIZE * GameCanvas.SCALE))) {
+					GameCanvas.Jerksus.setX(Entity.getX() + 1);
+					moveTick++;
+					typeable = false;
+				} else {
+					System.out.println("NO. YOU CAN'T MOVE ME THERE. JERK" + (Entitys.Player.getX() + 1) + " ");
+					movingD = false;
+					moveTick = 0;
+					tiles = 1;
+					input = scan.nextLine();
+				}
 			}
 
 			// move tileNum
@@ -141,13 +176,13 @@ public class Controller {
 			}
 
 			for (int i = 0; i <= tiles; i++) {
-				if (moveTick == 4*i) {
+				if (moveTick == 4 + (32 * i)) {
 					phase = 2;
-				} else if (moveTick == 12*i) {
+				} else if (moveTick == 12 + (32 * i)) {
 					phase = 0;
-				} else if (moveTick == 24*i) {
+				} else if (moveTick == 22 + (32 * i)) {
 					phase = 2;
-				} else if (moveTick == 29*i) {
+				} else if (moveTick == 29 + (32 * i)) {
 					phase = 1;
 				}
 			}
@@ -159,8 +194,10 @@ public class Controller {
 				moveTick = 0;
 				input = "";
 				typeable = true;
+				tiles = 1;
 			}
 		}
+
 	}
 
 	public void doMoveTick() {
