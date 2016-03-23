@@ -19,10 +19,10 @@ public abstract class Entity implements ActionListener{
 	protected int direction = 0;
 	protected int phase = 1;
 	
-	public static float x;
-	public static float y;
+	public float x;
+	public float y;
 	protected float health;
-	protected static BufferedImage[][] spritePhases;
+	protected BufferedImage[][] spritePhases;
 	protected float entitySpeed;
 	protected int move = 0;
 
@@ -122,7 +122,7 @@ public abstract class Entity implements ActionListener{
 	}
 
 	//gets the Entitie's X cord
-	public static float getX() {
+	public float getX() {
 		return x;
 	}
 
@@ -131,7 +131,7 @@ public abstract class Entity implements ActionListener{
 	}
 
 	//gets the Entitie's Y cord
-	public static float getY() {
+	public float getY() {
 		return y;
 	}
 

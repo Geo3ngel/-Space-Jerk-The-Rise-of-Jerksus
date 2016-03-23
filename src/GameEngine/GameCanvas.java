@@ -12,7 +12,10 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 import EntityDef.Controller;
+import Entitys.Abs_Gordanlians;
+import Entitys.HostileMobs;
 import Entitys.Player;
+import Entitys.Gordanlians.Peasant_Gordanlian;
 import MapStuff.MapsGrid;
 import MapStuff.MapLogic;
 import MapStuff.Mapping;
@@ -33,6 +36,7 @@ public class GameCanvas extends Canvas implements Runnable {
 	private Thread thread;
 	private long fps;
 	public static Entity Jerksus;
+	public static Abs_Gordanlians testMob;
 	public static float SCALE;
 	public static final int DEFAULT_SIZE = 480;
 
@@ -49,6 +53,8 @@ public class GameCanvas extends Canvas implements Runnable {
 	public void updateScale(int width, int height) {
 		this.setBounds(0, 0, width, height);
 		SCALE = height / DEFAULT_SIZE;
+		//Period is always 1 / FPS you wants
+		period = 1/15;
 	}
 
 	@Override
@@ -74,6 +80,7 @@ public class GameCanvas extends Canvas implements Runnable {
 	private void init() {
 		try {
 			Jerksus = new Player("AnimationSpriteSheet.png", 3, 4, MapsGrid.gridCords(15, 7), "Jerksus");
+			testMob = new Peasant_Gordanlian("Gordanlian.png", 1, 1, MapsGrid.gridCords(5, 10), "Peasant_Gordanlian");
 			tile = new TestingTiles();
 			object = new Objects();
 			OverLayObj = new OverLayObjects();
@@ -119,9 +126,12 @@ public class GameCanvas extends Canvas implements Runnable {
 				}
 			}
 		}
+		
+		//for(int i = Player.getPlayerMapGridCordX())
 
 		// Entities go here
 		drawImage(graphics, Jerksus);
+		drawImage(graphics, testMob);
 		graphics.drawString("FPS: " + fps, 20, 20);
 
 		// below commented out code is taking image from buffered Entity Array
@@ -156,18 +166,15 @@ public class GameCanvas extends Canvas implements Runnable {
 	}
 
 	public void Update() {
+		Jerksus.setEntitySpeed(.45f);
 		tick();
 		// Jerksus.Move(2, .15f * SCALE);
 		// DONT have him move here, just get his pos.
-
-		Jerksus.getX();
-		Jerksus.getY();
 
 		// System.out.println(Jerksus.getX() + " " + Jerksus.getY());
 
 		// set entity speed in child class with fast/slow paces, and able to
 		// scale to buffs/debuffs
-		Jerksus.setEntitySpeed(.45f);
 
 		// We Want this to update the players Position
 		// and maybe mobs/other entities as well
@@ -186,17 +193,40 @@ public class GameCanvas extends Canvas implements Runnable {
 	// This is where the game cycles through all its steps (updating stuff)
 	@Override
 	public void run() {
+		Runnable thread = new Runnable() {
+			
+			@Override
+			public void run() {
+				while(true){
+					long beginTime = System.currentTimeMillis();
+					Update();
+					long fps = System.currentTimeMillis() - beginTime;
+					long sleepTime = ((1/15)*1000) - fps;
+					//System.out.println(fps);
+					try {
+						sleepTime = 15;
+						if (sleepTime > 0) {
+							//find why sleep time is 0 to fix movement bug(doesn't matter?)
+							Thread.sleep(sleepTime);
+						}
+					} catch (Exception e) {
+					}
+				}
+			}
+		};
+		Thread th = new Thread(thread);
+		th.start();
 		while (true) {
 			long beginTime = System.currentTimeMillis();
 
 			// update will be updating all the entity animations/positioning,
 			// and tile animations
-			Update();
+			//Update();
 
 			Render();
 			Draw();
-			fps = System.currentTimeMillis() - beginTime;
-			long sleepTime = period - fps;
+			long afps = System.currentTimeMillis() - beginTime;
+			long sleepTime = period - afps;
 			try {
 				if (sleepTime > 0) {
 					Thread.sleep(sleepTime);
@@ -210,6 +240,13 @@ public class GameCanvas extends Canvas implements Runnable {
 		if (s != null) {
 			g.drawImage(s.getSprite(), (int) (s.getX() * SCALE), (int) (s.getY() * SCALE),
 					(int) (s.getSpriteWidth() * SCALE), (int) (s.getSpriteHeight() * SCALE), null);
+		}
+	}
+    
+	public void drawImage(Graphics g, HostileMobs h){
+		if (h != null) {
+			g.drawImage(h.getSprite(), (int) (h.getX() * SCALE), (int) (h.getY() * SCALE),
+					(int) (h.getSpriteWidth() * SCALE), (int) (h.getSpriteHeight() * SCALE), null);
 		}
 	}
 

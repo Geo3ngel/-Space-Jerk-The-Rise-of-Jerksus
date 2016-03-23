@@ -10,12 +10,6 @@ public class Controller {
 
 	static Scanner scan = new Scanner(System.in);
 	//Remove Screen Side Limits Later after adding in tile space rendering
-
-	private static String move = "move";
-	private static String direction1 = "down";
-	private static String direction2 = "left";
-	private static String direction3 = "up";
-	private static String direction4 = "right";
 	public static int direction = 2;
 	public static int phase = 1;
 	public static int tiles = 1;
@@ -24,7 +18,6 @@ public class Controller {
 	// private static String openInv = "open inventory";
 
 	public static int moveTick = 0;
-
 	public static boolean moving = false;
 	public static boolean movingD = false;
 	public static boolean movingL = false;
@@ -34,46 +27,44 @@ public class Controller {
 
 	// Hard coded movement strings for now
 	public static void controller(String playerInput) {
-
 		input = playerInput.toLowerCase();
 	}
 
 	public static void moveTicks() {
 		{
-			if (input.contains(move)) {
+			if (input.contains("move")) {
 
 				moving = true;
-				System.out.println("movin'");
 			} else if (!(input.equals(""))) {
 				// Change to not spam later
 				System.out.println("Uhmm.. What?");
 			}
 			if (moving) {
-				if (input.contains(direction1)) {
-					System.out.println("movin' down...");
+				if (input.contains("down")) {
+					//System.out.println("movin' down...");
 					moving = false;
 					movingD = true;
 					direction = 0;
 				}
 
-				else if (input.contains(direction2)) {
-					System.out.println("movin' left...");
+				else if (input.contains("left")) {
+					//System.out.println("movin' left...");
 					moving = false;
 					movingL = true;
 					direction = 1;
 
-				} else if (input.contains(direction3)) {
+				} else if (input.contains("up")) {
 
-					System.out.println("movin' up...");
+					//System.out.println("movin' up...");
 					moving = false;
 					movingU = true;
 					direction = 3;
 
-				} else if (input.contains(direction4))
+				} else if (input.contains("right"))
 
 				{
 
-					System.out.println("movin' right...");
+					//System.out.println("movin' right...");
 					moving = false;
 					movingR = true;
 					direction = 2;
@@ -84,7 +75,7 @@ public class Controller {
 				// command is
 				// invalid
 				{
-					System.out.println("Yes, but where to?");
+					System.out.println("Yes, but move in which direction?");
 				}
 			}
 
@@ -93,13 +84,13 @@ public class Controller {
 			// in each direction
 
 			if (movingD) {
-				if ((((int) (Entitys.Player.getY() + 1)) < (GameCanvas.DEFAULT_SIZE))) {
-					GameCanvas.Jerksus.setY(Entity.getY() + 1);
+				if ((((int) (GameCanvas.Jerksus.getY() + 1)) < (GameCanvas.DEFAULT_SIZE))) {
+					GameCanvas.Jerksus.setY(GameCanvas.Jerksus.getY() + 1);
 					GameCanvas.Jerksus.getSprite();
 					moveTick++;
 					typeable = false;
 				} else {
-					System.out.println("NO. YOU CAN'T MOVE ME THERE. JERK");
+					System.out.println("Uhmmm.. theres a thing there...");
 					movingD = false;
 					moveTick = 0;
 					tiles = 1;
@@ -108,8 +99,8 @@ public class Controller {
 			}
 
 			else if (movingL) {
-				if (((int) ((Entitys.Player.getX() - 1))) > -1) {
-					GameCanvas.Jerksus.setX(Entity.getX() - 1);
+				if (((int) ((GameCanvas.Jerksus.getX() - 1))) > -1) {
+					GameCanvas.Jerksus.setX(GameCanvas.Jerksus.getX() - 1);
 					moveTick++;
 					typeable = false;
 				} else {
@@ -122,8 +113,8 @@ public class Controller {
 			}
 
 			else if (movingU) {
-				if (((int) ((Entitys.Player.getY() - 1))) > -1) {
-					GameCanvas.Jerksus.setY(Entity.getY() - 1);
+				if (((int) ((GameCanvas.Jerksus.getY() - 1))) > -1) {
+					GameCanvas.Jerksus.setY(GameCanvas.Jerksus.getY() - 1);
 					moveTick++;
 					typeable = false;
 				} else {
@@ -136,12 +127,12 @@ public class Controller {
 			}
 
 			else if (movingR) {
-				if ((((int) (Entitys.Player.getX() + 1)) < (GameCanvas.DEFAULT_SIZE * GameCanvas.SCALE))) {
-					GameCanvas.Jerksus.setX(Entity.getX() + 1);
+				if ((((int) (GameCanvas.Jerksus.getX() + 1)) < (GameCanvas.DEFAULT_SIZE * GameCanvas.SCALE))) {
+					GameCanvas.Jerksus.setX(GameCanvas.Jerksus.getX() + 1);
 					moveTick++;
 					typeable = false;
 				} else {
-					System.out.println("NO. YOU CAN'T MOVE ME THERE. JERK" + (Entitys.Player.getX() + 1) + " ");
+					System.out.println("NO. YOU CAN'T MOVE ME THERE. JERK" + (GameCanvas.Jerksus.getX() + 1) + " ");
 					movingD = false;
 					moveTick = 0;
 					tiles = 1;

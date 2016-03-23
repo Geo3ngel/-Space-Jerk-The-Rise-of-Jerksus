@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 import EntityDef.Controller;
 import GameEngine.*;
 
-public class Player extends Entity{
+public class Player extends Entity {
 
 	public Player(String spriteLocation, int spriteSheetX, int spriteSheetY, Point Location, String entityName)
 			throws IOException {
@@ -37,10 +37,18 @@ public class Player extends Entity{
 		// TODO Auto-generated method stub
 
 	}
+
 	@Override
 	public BufferedImage getSprite() {
-		//change 2 to phase later
 		return spritePhases[Controller.phase][Controller.direction];
+	}
+
+	public int getPlayerMapGridCordX() {
+		return((int)(getX()/32));
+	}
+
+	public int getPlayerMapGridCordY() {
+		return((int)(getY()/32));
 	}
 
 }
